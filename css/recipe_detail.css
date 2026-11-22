@@ -1,0 +1,345 @@
+/* Navigation */
+.navbar {
+    background: #ffffff;
+    padding: 18px 6%;
+    border-bottom: 1px solid #e8eee9;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.nav-container {
+    max-width: 1250px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo {
+    text-decoration: none;
+    color: #24583f;
+    font-size: 25px;
+    font-weight: 800;
+}
+.nav-links {
+    display: flex;
+    gap: 35px;
+}
+.nav-links a {
+    text-decoration: none;
+    color: #444;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.nav-links a:hover { color: #2d6a4f; }
+.nav-button {
+    background: #2d6a4f;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.nav-button:hover { background: #1b4332; }
+
+/* Footer */
+.footer {
+    background: #183b2b;
+    color: white;
+    text-align: center;
+    padding: 45px 20px;
+    margin-top: 70px;
+}
+.footer h2 { font-size: 25px; margin-bottom: 12px; }
+.footer p { color: #d1ddd5; font-size: 14px; }
+.copyright { margin-top: 25px; }
+
+/* Shared responsive navigation */
+@media (max-width: 700px) {
+    .nav-container { flex-wrap: wrap; gap: 15px; }
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 20px;
+    }
+    .nav-links a { font-size: 13px; }
+    .logo { font-size: 21px; }
+    .nav-button { padding: 10px 13px; font-size: 12px; }
+}
+
+/* Page-specific styles */
+
+/* =====================================
+   RECIPE DETAIL PAGE
+===================================== */
+
+main {
+    min-height: 75vh;
+    padding: 55px 20px 75px;
+}
+
+.detail-wrap {
+    max-width: 950px;
+    margin: auto;
+}
+
+/* Back Link */
+
+.detail-wrap > .text-link {
+    display: inline-block;
+    color: #24834b;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 650;
+    margin-bottom: 22px;
+    transition: 0.3s;
+}
+
+.detail-wrap > .text-link:hover {
+    color: #145d30;
+    transform: translateX(-4px);
+}
+
+/* Detail Card */
+
+.detail-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #e9eee8;
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.06);
+}
+
+/* Hero Section */
+
+.detail-hero {
+    height: 340px;
+    background: linear-gradient(135deg, #e5f3e7, #c6e5ce);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.detail-hero span {
+    font-size: 110px;
+    transition: 0.4s;
+}
+
+.detail-card:hover .detail-hero span {
+    transform: scale(1.08);
+}
+
+/* Detail Content */
+
+.detail-content {
+    padding: 40px 45px;
+}
+
+.recipe-cuisine {
+    display: inline-block;
+    background: #eaf6ed;
+    color: #24834b;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+}
+
+.detail-content h1 {
+    font-size: 36px;
+    color: #205c36;
+    margin: 15px 0 12px;
+    line-height: 1.3;
+}
+
+.detail-description {
+    font-size: 16px;
+    color: #737d75;
+    line-height: 1.9;
+    margin-bottom: 25px;
+}
+
+/* Recipe Meta */
+
+.detail-content .recipe-meta {
+    display: flex;
+    gap: 35px;
+    align-items: center;
+    padding: 17px 0;
+    margin: 20px 0 30px;
+    border-top: 1px solid #edf0eb;
+    border-bottom: 1px solid #edf0eb;
+}
+
+.recipe-meta span {
+    color: #58675d;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Ingredients */
+
+.detail-content h2 {
+    color: #205c36;
+    font-size: 24px;
+    margin-bottom: 17px;
+}
+
+.ingredients {
+    background: #f7faf6;
+    border: 1px solid #e7eee6;
+    border-radius: 10px;
+    padding: 22px 25px;
+    color: #4e5c52;
+    font-size: 15px;
+    line-height: 2;
+    margin-bottom: 30px;
+}
+
+/* Action Buttons */
+
+.action-row {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    border-top: 1px solid #edf0eb;
+    padding-top: 25px;
+}
+
+.primary-btn {
+    display: inline-block;
+    background: #24834b;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 13px 25px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 650;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.primary-btn:hover {
+    background: #176536;
+    transform: translateY(-2px);
+}
+
+.danger-btn {
+    display: inline-block;
+    background: #fff0ef;
+    color: #d63838;
+    text-decoration: none;
+    padding: 13px 25px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 650;
+    border: 1px solid #f4d5d2;
+    transition: 0.3s;
+}
+
+.danger-btn:hover {
+    background: #d63838;
+    color: #ffffff;
+    border-color: #d63838;
+    transform: translateY(-2px);
+}
+
+/* Notifications */
+
+.notice {
+    padding: 13px 16px;
+    border-radius: 7px;
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+.notice.success {
+    background: #e7f7ec;
+    color: #176536;
+}
+
+.notice.error {
+    background: #fdeaea;
+    color: #b42318;
+}
+
+/* =====================================
+   RESPONSIVE DESIGN
+===================================== */
+
+@media (max-width: 768px) {
+
+    main {
+        padding: 35px 15px 55px;
+    }
+
+    .detail-hero {
+        height: 260px;
+    }
+
+    .detail-hero span {
+        font-size: 85px;
+    }
+
+    .detail-content {
+        padding: 30px 25px;
+    }
+
+    .detail-content h1 {
+        font-size: 29px;
+    }
+
+    .detail-content h2 {
+        font-size: 21px;
+    }
+
+    .detail-description {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .detail-hero {
+        height: 210px;
+    }
+
+    .detail-hero span {
+        font-size: 70px;
+    }
+
+    .detail-content {
+        padding: 23px 18px;
+    }
+
+    .detail-content h1 {
+        font-size: 25px;
+    }
+
+    .detail-content .recipe-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .action-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .action-row a {
+        text-align: center;
+        width: 100%;
+    }
+
+    .ingredients {
+        padding: 17px;
+    }
+}

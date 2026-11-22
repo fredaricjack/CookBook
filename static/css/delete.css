@@ -1,0 +1,225 @@
+/* Navigation */
+.navbar {
+    background: #ffffff;
+    padding: 18px 6%;
+    border-bottom: 1px solid #e8eee9;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.nav-container {
+    max-width: 1250px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo {
+    text-decoration: none;
+    color: #24583f;
+    font-size: 25px;
+    font-weight: 800;
+}
+.nav-links {
+    display: flex;
+    gap: 35px;
+}
+.nav-links a {
+    text-decoration: none;
+    color: #444;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.nav-links a:hover { color: #2d6a4f; }
+.nav-button {
+    background: #2d6a4f;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.nav-button:hover { background: #1b4332; }
+
+/* Footer */
+.footer {
+    background: #183b2b;
+    color: white;
+    text-align: center;
+    padding: 45px 20px;
+    margin-top: 70px;
+}
+.footer h2 { font-size: 25px; margin-bottom: 12px; }
+.footer p { color: #d1ddd5; font-size: 14px; }
+.copyright { margin-top: 25px; }
+
+/* Shared responsive navigation */
+@media (max-width: 700px) {
+    .nav-container { flex-wrap: wrap; gap: 15px; }
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 20px;
+    }
+    .nav-links a { font-size: 13px; }
+    .logo { font-size: 21px; }
+    .nav-button { padding: 10px 13px; font-size: 12px; }
+}
+
+/* Page-specific styles */
+
+/* =====================================
+   DELETE RECIPE CONFIRMATION PAGE
+===================================== */
+
+main {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+}
+
+.page-wrap {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Confirmation Card */
+
+.confirm-card {
+    background: #ffffff;
+    padding: 45px 40px;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid #f0e5e4;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.07);
+}
+
+/* Warning Icon */
+
+.confirm-card::before {
+    content: "⚠️";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 85px;
+    height: 85px;
+    margin: 0 auto 22px;
+    background: #fff1ed;
+    border-radius: 50%;
+    font-size: 38px;
+}
+
+/* Heading */
+
+.confirm-card h1 {
+    color: #c93636;
+    font-size: 30px;
+    margin-bottom: 14px;
+}
+
+/* Description */
+
+.confirm-card p {
+    color: #737b75;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.confirm-card p strong {
+    color: #26352b;
+    font-weight: 700;
+}
+
+/* Confirmation Form */
+
+.confirm-card form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Delete Button */
+
+.danger-btn {
+    display: inline-block;
+    background: #dc3939;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 13px 23px;
+    font-size: 14px;
+    font-weight: 650;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.danger-btn:hover {
+    background: #b92323;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(220, 57, 57, 0.2);
+}
+
+/* Cancel Button */
+
+.confirm-card .text-link {
+    display: inline-block;
+    background: #edf5ee;
+    color: #24834b;
+    text-decoration: none;
+    padding: 13px 25px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 650;
+    transition: 0.3s;
+}
+
+.confirm-card .text-link:hover {
+    background: #dcefe0;
+    color: #176536;
+}
+
+/* =====================================
+   RESPONSIVE DESIGN
+===================================== */
+
+@media (max-width: 600px) {
+
+    main {
+        padding: 35px 15px;
+    }
+
+    .confirm-card {
+        padding: 35px 22px;
+    }
+
+    .confirm-card h1 {
+        font-size: 25px;
+    }
+
+    .confirm-card p {
+        font-size: 14px;
+    }
+
+    .confirm-card form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .confirm-card form button,
+    .confirm-card form a {
+        width: 100%;
+        text-align: center;
+    }
+}

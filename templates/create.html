@@ -1,0 +1,96 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Recipe | CookBook</title>
+    <link rel="stylesheet" href="{% static 'css/create.css' %}">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="nav-container">
+        <a href="{% url 'home' %}" class="logo">🍃 CookBook</a>
+
+        <nav class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'recipe_list' %}">Recipes</a>
+            <a href="{% url 'recipe_create' %}">Add Recipe</a>  
+        </nav>
+
+        <a href="{% url 'recipe_create' %}" class="nav-button">
+            + Share Recipe
+        </a>
+    </div>
+</header>
+
+<main>
+    <section class="page-wrap">
+        <div class="form-card">
+
+            <h1>Add a New Recipe</h1>
+            <p>Share your favourite dish with the CookBook community.</p>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="notice {{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="post"
+                  action="{% url 'recipe_create' %}"
+                  class="recipe-form"
+                  enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+                {% for field in form %}
+                    <div class="form-group">
+
+                        <label for="{{ field.id_for_label }}">
+                            {{ field.label }}
+                        </label>
+
+                        {{ field }}
+
+                        {% if field.help_text %}
+                            <small>{{ field.help_text }}</small>
+                        {% endif %}
+
+                        {% for error in field.errors %}
+                            <small class="field-error">
+                                {{ error }}
+                            </small>
+                        {% endfor %}
+
+                    </div>
+                {% endfor %}
+
+                <button type="submit" class="primary-btn">
+                    Publish Recipe
+                </button>
+
+                <a href="{% url 'recipe_list' %}" class="text-link">
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <h2>🍃 CookBook</h2>
+    <p>Discover, Cook and Share Delicious Recipes.</p>
+    <p class="copyright">
+        © 2026 CookBook. All rights reserved.
+    </p>
+</footer>
+
+</body>
+</html>

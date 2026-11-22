@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | CookBook</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+<header class="navbar">
+  <div class="nav-container">
+    <a href="{% url 'home' %}" class="logo">🍃 CookBook</a>
+    <nav class="nav-links">
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'recipe_list' %}">Recipes</a>
+      <a href="{% url 'recipe_create' %}">Add Recipe</a>
+    </nav>
+    <a href="{% url 'recipe_create' %}" class="nav-button">+ Share Recipe</a>
+  </div>
+</header>
+<main>
+
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-label">WELCOME TO COOKBOOK</span>
+    <h1>Discover the Joy of <span>Cooking</span></h1>
+    <p>Explore delicious recipes from around the world. Find your favourite dishes and share your own cooking experiences.</p>
+    <div class="hero-buttons">
+      <a href="{% url 'recipe_list' %}" class="primary-btn">Explore Recipes →</a>
+      <a href="{% url 'recipe_create' %}" class="secondary-btn">Share Your Recipe</a>
+    </div>
+  </div>
+  <div class="hero-image"><img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900" alt="Healthy food"></div>
+</section>
+<section class="search-section">
+  <div class="search-content">
+    <h2>What would you like to cook today?</h2><p>Find your next favourite recipe.</p>
+    <form action="{% url 'recipe_list' %}" method="get">
+      <input type="search" name="search" placeholder="Search recipes..." aria-label="Search recipes">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+</section>
+<section class="categories-section">
+  <div class="section-heading"><div><span class="section-label">EXPLORE BY TASTE</span><h2>Popular Cuisines</h2></div><a href="{% url 'recipe_list' %}">View All →</a></div>
+  <div class="category-grid">
+    <a href="{% url 'recipe_list' %}?cuisine=Indian" class="category-card"><span>🍛</span><h3>Indian</h3></a>
+    <a href="{% url 'recipe_list' %}?cuisine=Chinese" class="category-card"><span>🥡</span><h3>Chinese</h3></a>
+    <a href="{% url 'recipe_list' %}?cuisine=Italian" class="category-card"><span>🍝</span><h3>Italian</h3></a>
+    <a href="{% url 'recipe_list' %}?cuisine=Mexican" class="category-card"><span>🌮</span><h3>Mexican</h3></a>
+    <a href="{% url 'recipe_list' %}?cuisine=Continental" class="category-card"><span>🥗</span><h3>Continental</h3></a>
+  </div>
+</section>
+<section class="latest-section">
+  <div class="section-heading"><div><span class="section-label">FRESH FROM OUR KITCHEN</span><h2>Latest Recipes</h2></div><a href="{% url 'recipe_list' %}">View All Recipes →</a></div>
+    <div class="recipe-grid">
+      {% for cook in cooks %}
+          <article class="recipe-card">
+
+              <div class="recipe-placeholder">
+                  {% if cook.image %}
+                      <img src="{{ cook.image.url }}" alt="{{ cook.title }}">
+                  {% else %}
+                      <span>🍽️</span>
+                  {% endif %}
+              </div>
+
+              <div class="recipe-info">
+                  <span class="recipe-cuisine">{{ cook.cuisine }}</span>
+
+                  <h3>{{ cook.title }}</h3>
+
+                  <p>{{ cook.description|truncatewords:15 }}</p>
+
+                  <div class="recipe-meta">
+                      <span>⏱ {{ cook.cooking_time }} mins</span>
+                      <span>⭐ {{ cook.difficulty }}</span>
+                  </div>
+
+                  <a href="{% url 'recipe_detail' cook.pk %}" class="view-recipe">
+                      View Recipe →
+                  </a>
+              </div>
+
+          </article>
+      {% empty %}
+          <div class="empty-recipes">
+              <h3>No recipes available yet!</h3>
+              <p>Be the first to share a recipe.</p>
+              <a href="{% url 'recipe_create' %}">Create Your First Recipe →</a>
+          </div>
+      {% endfor %}
+    </div>
+</section>
+<section class="share-section"><div><span>YOUR KITCHEN, YOUR CREATION</span><h2>Have a delicious recipe to share?</h2><p>Share your favourite dishes and inspire others.</p><a href="{% url 'recipe_create' %}">Share Your Recipe →</a></div><div class="share-emoji">👨‍🍳</div></section>
+
+</main>
+<footer class="footer">
+  <h2>🍃 CookBook</h2>
+  <p>Discover, Cook and Share Delicious Recipes.</p>
+  <p class="copyright">© 2026 CookBook. All rights reserved.</p>
+</footer>
+</body>
+</html>

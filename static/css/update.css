@@ -1,0 +1,294 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f7f9f6;
+    color: #26352b;
+    line-height: 1.6;
+}
+
+/* Navbar */
+
+.navbar {
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    padding: 16px 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 750;
+    color: #24834b;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #444;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #24834b;
+}
+
+.nav-button {
+    background: #24834b;
+    color: white;
+    text-decoration: none;
+    padding: 11px 20px;
+    border-radius: 7px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-button:hover {
+    background: #176536;
+}
+
+/* Main Section */
+
+main {
+    min-height: 75vh;
+    padding: 65px 20px;
+}
+
+.page-wrap {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.form-card {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.07);
+    border: 1px solid #edf0eb;
+}
+
+.form-card h1 {
+    font-size: 32px;
+    color: #205c36;
+    margin-bottom: 8px;
+}
+
+.form-card > p {
+    color: #777;
+    font-size: 15px;
+    margin-bottom: 28px;
+}
+
+/* Form */
+
+.recipe-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 15px;
+    font-weight: 650;
+    color: #34483a;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #dce4dc;
+    border-radius: 8px;
+    background: #fbfdfb;
+    color: #333;
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #24834b;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(36, 131, 75, 0.10);
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* File Input */
+
+.form-group input[type="file"] {
+    padding: 12px;
+    cursor: pointer;
+}
+
+/* Submit Button */
+
+.primary-btn {
+    border: none;
+    background: #24834b;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 650;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 5px;
+}
+
+.primary-btn:hover {
+    background: #176536;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(36, 131, 75, 0.2);
+}
+
+/* Cancel Link */
+
+.text-link {
+    text-decoration: none;
+    text-align: center;
+    color: #666;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 8px;
+    transition: 0.3s;
+}
+
+.text-link:hover {
+    color: #24834b;
+}
+
+/* Validation Errors */
+
+.field-error {
+    color: #dc3545;
+    font-size: 13px;
+}
+
+.notice {
+    padding: 12px 15px;
+    border-radius: 7px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.notice.success {
+    background: #e7f7ec;
+    color: #176536;
+}
+
+.notice.error {
+    background: #fdeaea;
+    color: #b42318;
+}
+
+/* Footer */
+
+.footer {
+    background: #183b29;
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+.footer h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.footer p {
+    color: #d0ded4;
+    font-size: 14px;
+}
+
+.footer .copyright {
+    margin-top: 18px;
+    font-size: 13px;
+    color: #aabdaf;
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-button {
+        display: none;
+    }
+
+    main {
+        padding: 35px 15px;
+    }
+
+    .form-card {
+        padding: 25px 20px;
+    }
+
+    .form-card h1 {
+        font-size: 27px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    .form-card {
+        padding: 22px 16px;
+    }
+
+    .primary-btn {
+        width: 100%;
+    }
+}

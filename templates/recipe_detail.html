@@ -1,0 +1,109 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ cook.title }} | CookBook</title>
+    <link rel="stylesheet" href="{% static 'css/recipe_detail.css' %}">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="nav-container">
+        <a href="{% url 'home' %}" class="logo">🍃 CookBook</a>
+
+        <nav class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'recipe_list' %}">Recipes</a>
+            <a href="{% url 'recipe_create' %}">Add Recipe</a>
+        </nav>
+
+        <a href="{% url 'recipe_create' %}" class="nav-button">
+            + Share Recipe
+        </a>
+    </div>
+</header>
+
+<main>
+    <section class="page-wrap detail-wrap">
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="notice {{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <a href="{% url 'recipe_list' %}" class="text-link">
+            ← Back to recipes
+        </a>
+
+        <article class="detail-card">
+
+            <!-- Recipe Image -->
+            <div class="detail-hero">
+                {% if cook.image %}
+                    <img src="{{ cook.image.url }}"
+                         alt="{{ cook.title }}">
+                {% else %}
+                    <div class="no-image">
+                        🍲
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Recipe Details -->
+            <div class="detail-content">
+
+                <span class="recipe-cuisine">
+                    {{ cook.cuisine }}
+                </span>
+
+                <h1>{{ cook.title }}</h1>
+
+                <p class="detail-description">
+                    {{ cook.description }}
+                </p>
+
+                <div class="recipe-meta">
+                    <span>⏱ {{ cook.cooking_time }} minutes</span>
+                    <span>⭐ {{ cook.get_difficulty_display }}</span>
+                </div>
+
+                <h2>Ingredients</h2>
+
+                <div class="ingredients">
+                    {{ cook.ingredients|linebreaks }}
+                </div>
+
+                <div class="action-row">
+                    <a class="primary-btn"
+                       href="{% url 'recipe_update' cook.pk %}">
+                        Edit Recipe
+                    </a>
+
+                    <a class="danger-btn"
+                       href="{% url 'recipe_delete' cook.pk %}">
+                        Delete Recipe
+                    </a>
+                </div>
+
+            </div>
+        </article>
+    </section>
+</main>
+
+<footer class="footer">
+    <h2>🍃 CookBook</h2>
+    <p>Discover, Cook and Share Delicious Recipes.</p>
+    <p class="copyright">
+        © 2026 CookBook. All rights reserved.
+    </p>
+</footer>
+
+</body>
+</html>
+```
