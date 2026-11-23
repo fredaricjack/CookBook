@@ -53,18 +53,16 @@ def create_cook(request):
 
 
 def update_cook(request, pk):
-
     cook = get_object_or_404(Cook, pk=pk)
     if request.method == 'POST':
-        form = CookForm(request.POST,request.FILES,instance=cook)
+        form = CookForm(request.POST, request.FILES, instance=cook)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Recipe updated successfully.')
             return redirect('recipe_detail', pk=cook.pk)
     else:
         form = CookForm(instance=cook)
-
-    return render(request,'update.html',{'form': form, 'cook': cook})
-
+    return render(request, 'update.html', {'form': form,'cook': cook})
 
 
 def delete_cook(request, pk):

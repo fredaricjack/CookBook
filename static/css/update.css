@@ -1,5 +1,4 @@
 
-
 * {
     margin: 0;
     padding: 0;
@@ -121,7 +120,7 @@ main {
     color: #34483a;
 }
 
-.form-group input,
+.form-group input:not([type="file"]):not([type="checkbox"]),
 .form-group textarea,
 .form-group select {
     width: 100%;
@@ -149,10 +148,99 @@ main {
     resize: vertical;
 }
 
-/* File Input */
+/* Current Image */
+
+.current-image {
+    margin: 8px 0 12px;
+}
+
+.current-image p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #526357;
+    margin-bottom: 10px;
+}
+
+.current-image img {
+    display: block;
+    width: 180px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #dce8df;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Current Image Link */
+
+.form-group a {
+    color: #24834b;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 500;
+    width: fit-content;
+    overflow-wrap: anywhere;
+}
+
+.form-group a:hover {
+    text-decoration: underline;
+}
+
+/* Image Upload */
 
 .form-group input[type="file"] {
+    width: 100%;
     padding: 12px;
+    background: #f8fbf8;
+    border: 1px solid #dce4dc;
+    border-radius: 9px;
+    color: #526357;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-group input[type="file"]:hover {
+    border-color: #24834b;
+    background: #f1f8f2;
+}
+
+.form-group input[type="file"]::file-selector-button {
+    background: #24834b;
+    color: #ffffff;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 6px;
+    margin-right: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-group input[type="file"]::file-selector-button:hover {
+    background: #176536;
+}
+
+/* Clear Checkbox */
+
+.form-group input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    accent-color: #24834b;
+    cursor: pointer;
+    vertical-align: middle;
+    margin: 8px 8px 8px 0;
+}
+
+/* Clear Label */
+
+.form-group input[type="checkbox"] + label {
+    display: inline;
+    font-size: 14px;
+    color: #526357;
+    font-weight: 500;
     cursor: pointer;
 }
 
@@ -290,5 +378,14 @@ main {
 
     .primary-btn {
         width: 100%;
+    }
+
+    .current-image img {
+        width: 150px;
+        height: 130px;
+    }
+
+    .form-group input[type="file"] {
+        font-size: 12px;
     }
 }
