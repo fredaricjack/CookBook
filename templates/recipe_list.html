@@ -1,3 +1,4 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -6,51 +7,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipes | CookBook</title>
     <link rel="stylesheet" href="{% static 'css/recipe_list.css' %}">
-    
 </head>
 <body>
+
 <header class="navbar">
-  <div class="nav-container">
-    <a href="{% url 'home' %}" class="logo">🍃 CookBook</a>
-    <nav class="nav-links">
-      <a href="{% url 'home' %}">Home</a>
-      <a href="{% url 'recipe_list' %}">Recipes</a>
-      <a href="{% url 'recipe_create' %}">Add Recipe</a>
-    </nav>
-    <a href="{% url 'recipe_create' %}" class="nav-button">+ Share Recipe</a>
-  </div>
+    <div class="nav-container">
+        <a href="{% url 'home' %}" class="logo">🍃 CookBook</a>
+
+        <nav class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'recipe_list' %}">Recipes</a>
+            <a href="{% url 'recipe_create' %}">Add Recipe</a>
+        </nav>
+
+        <a href="{% url 'recipe_create' %}" class="nav-button">
+            + Share Recipe
+        </a>
+    </div>
 </header>
+
 <main>
+    <section class="page-wrap">
 
-<section class="page-wrap">
-  <div class="page-heading"><div><span class="section-label">EXPLORE OUR KITCHEN</span><h1>All Recipes</h1><p>Find something delicious to cook.</p></div><a class="primary-btn" href="{% url 'recipe_create' %}">+ Add Recipe</a></div>
-  {% if messages %}
-  {% for message in messages %}
-    <div class="notice {{ message.tags }}">{{ message }}</div>
-  {% endfor %}
-{% endif %}
+        <div class="page-heading">
+            <div>
+                <span class="section-label">EXPLORE OUR KITCHEN</span>
+                <h1>All Recipes</h1>
+                <p>Find something delicious to cook.</p>
+            </div>
 
-  <form method="get" action="{% url 'recipe_list' %}" class="filter-form">
-    <input type="search" name="search" value="{{ search_query }}" placeholder="Search by recipe or ingredient">
-    <select name="cuisine"><option value="">All cuisines</option>{% for value,label in cuisine_choices %}<option value="{{ value }}" {% if selected_cuisine == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select>
-    <button type="submit" class="primary-btn">Search</button><a href="{% url 'recipe_list' %}" class="text-link">Clear</a>
-  </form>
-  <div class="recipe-grid">
-  {% for cook in cooks %}
-    <article class="recipe-card"><div class="recipe-placeholder"><span>🍽️</span></div><div class="recipe-info">
-      <span class="recipe-cuisine">{{ cook.cuisine }}</span><h2>{{ cook.title }}</h2><p>{{ cook.description|truncatewords:20 }}</p>
-      <div class="recipe-meta"><span>⏱ {{ cook.cooking_time }} mins</span><span>⭐ {{ cook.difficulty }}</span></div>
-      <a class="view-recipe" href="{% url 'recipe_detail' cook.pk %}">View Recipe →</a>
-    </div></article>
-  {% empty %}<div class="empty-recipes"><h2>No recipes found</h2><p>Try another search or add the first recipe.</p><a href="{% url 'recipe_create' %}">Add a Recipe</a></div>{% endfor %}
-  </div>
-</section>
+            <a class="primary-btn" href="{% url 'recipe_create' %}">
+                + Add Recipe
+            </a>
+        </div>
 
+        {% if messages %}
+            {% for message in messages %}
+                <div class="notice {{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="get" action="{% url 'recipe_list' %}" class="filter-form">
+
+            <input
+                type="search"
+                name="search"
+                value="{{ search_query }}"
+                placeholder="Search by recipe or ingredient"
+            >
+
+            <select name="cuisine">
+                <option value="">All cuisines</option>
+
+                {% for value, label in cuisine_choices %}
+                    <option value="{{ value }}"
+                        {% if selected_cuisine == value %}selected{% endif %}>
+                        {{ label }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <button type="submit" class="primary-btn">Search</button>
+
+            <a href="{% url 'recipe_list' %}" class="text-link">Clear</a>
+
+        </form>
+
+        <div class="recipe-grid">
+
+            {% for cook in cooks %}
+
+                <article class="recipe-card">
+
+                    <div class="recipe-placeholder">
+                        {% if cook.image %}
+                            <img src="{{ cook.image.url }}" alt="{{ cook.title }}">
+                        {% else %}
+                            <span>🍽️</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="recipe-info">
+
+                        <span class="recipe-cuisine">
+                            {{ cook.cuisine }}
+                        </span>
+
+                        <h2>{{ cook.title }}</h2>
+
+                        <p>{{ cook.description|truncatewords:20 }}</p>
+
+                        <div class="recipe-meta">
+                            <span>⏱ {{ cook.cooking_time }} mins</span>
+                            <span>⭐ {{ cook.difficulty }}</span>
+                        </div>
+
+                        <a class="view-recipe"
+                           href="{% url 'recipe_detail' cook.pk %}">
+                            View Recipe →
+                        </a>
+
+                    </div>
+
+                </article>
+
+            {% empty %}
+
+                <div class="empty-recipes">
+                    <h2>No recipes found</h2>
+                    <p>Try another search or add the first recipe.</p>
+                    <a href="{% url 'recipe_create' %}">Add a Recipe</a>
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
 </main>
+
 <footer class="footer">
-  <h2>🍃 CookBook</h2>
-  <p>Discover, Cook and Share Delicious Recipes.</p>
-  <p class="copyright">© 2026 CookBook. All rights reserved.</p>
+    <h2>🍃 CookBook</h2>
+    <p>Discover, Cook and Share Delicious Recipes.</p>
+    <p class="copyright">© 2026 CookBook. All rights reserved.</p>
 </footer>
+
 </body>
 </html>
